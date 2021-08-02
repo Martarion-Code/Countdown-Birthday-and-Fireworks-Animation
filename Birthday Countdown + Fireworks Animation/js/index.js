@@ -3,6 +3,7 @@
 const happyContainer = document.querySelector('.happy__content'); 
 const countdownContainer = document.querySelector('.countdown__content'); 
 const settingIcon = document.querySelector('.setting-icon');
+const subline = document.querySelector('.subline h2');
 const modalbox = document.querySelector('.content-modalbox');
 const birthdayInput = document.querySelector('.birthday__input');
 const submitBtn = document.querySelector('.submit-btn__input--style');
@@ -27,18 +28,19 @@ const months = [
 ];
 
 
+/**Important Variable */
 const d = new Date();
-
 const oneYearFromNow = new Date(d.setFullYear(d.getFullYear() + 1));
 
 let birthday = '';
 
-birthday = `20 March, ${oneYearFromNow.getFullYear()} 00:00:00`;
+checkPastOrFuture('20', 'March');
 
 function submitDate(e){
-  //e.preventDefault();
 
   let year, str;
+  
+  //check if the value from birthday input is right or wrong and do something when either one happen
   if(birthdayInput.value !== ''){
      str = birthdayInput.value.split(' ');
     if( isNaN(str[0] - 0) && str[0] > 31){
@@ -56,25 +58,8 @@ function submitDate(e){
     return;
   }
 
-    const data = new Date(str[0] + ' ' +  str[1] + ' ' + new Date().getFullYear()).setHours(0, 0, 0, 0);
 
-    const now = new Date().setHours(0, 0, 0, 0);
-
-    const lastDateInThisYear = new Date('31 December' + new Date().getFullYear());
-
-    console.log(str[0] + ' ' +  str[1] + ' ' + new Date().getFullYear())
-    console.log(new Date(str[0] + ' ' +  str[1] + ' ' + new Date().getFullYear()))
-
-    if(data  < now){
-      console.log('past')
-      birthday = `${str[0]} ${str[1]} ${oneYearFromNow.getFullYear()} 00:00:00`;
-      
-    }else if(data <= lastDateInThisYear){
-      console.log('_______________________________')
-      console.log('not until last date')
-      birthday = `${str[0]} ${str[1]} ${new Date().getFullYear()} 00:00:00`;
-    }
-
+    checkPastOrFuture(str[0], str[1]);
 
     modalbox.style.display = 'none';
     
@@ -84,6 +69,7 @@ function submitDate(e){
 
 }
 
+//Event listener for submit button
 modalbox.addEventListener('keyup', e =>{
   if(e.key === 'Enter'){
     submitDate();
@@ -95,18 +81,10 @@ submitBtn.addEventListener('click', submitDate)
 
 
 
-if(Date.parse()-Date.parse(new Date())<0){
-   
-}
-
 let distanceOfTime;
 
+//Interval for Countdown
 let interval = setInterval(() => {
-
-  // if(Date.parse(birthday)-Date.parse(new Date())<0){
-  //   console.log('date in past')
-
-  // }
 
   const date = new Date(birthday),
         seconds = 1000,
@@ -158,8 +136,29 @@ settingIcon.addEventListener("click", () =>{
 
 
 
-// addEventListener('keypress', function (e) {
-//   if (e.key === 'Enter') {
-//     submitDate();
-//   }
-// });
+/**Utils */
+
+/**For checking the date is in the past or in the future and do something when either one happen*/
+function checkPastOrFuture(date, month, year){
+  const data = new Date(date + ' ' +  month + ' ' + new Date().getFullYear()).setHours(0, 0, 0, 0);
+
+  const now = new Date().setHours(0, 0, 0, 0);
+
+  const lastDateInThisYear = new Date('31 December' + new Date().getFullYear());
+
+  console.log(date + ' ' +  month + ' ' + new Date().getFullYear())
+  console.log(new Date(date + ' ' +  month + ' ' + new Date().getFullYear()))
+
+  if(data  < now){
+    console.log('past')
+    birthday = `${date} ${month} ${oneYearFromNow.getFullYear()} 00:00:00`;
+    subline.textContent =  `From this day until ${date} ${month} ${oneYearFromNow.getFullYear()}`;
+
+    
+  }else if(data <= lastDateInThisYear){
+    console.log('_______________________________')
+    console.log('not until last date')
+    birthday = `${date} ${month} ${new Date().getFullYear()} 00:00:00`;
+    subline.textContent  = `From this day until ${date} ${month} ${new Date().getFullYear()}`;
+  }
+}
