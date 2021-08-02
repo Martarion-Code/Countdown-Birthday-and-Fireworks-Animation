@@ -1,9 +1,0 @@
-
-{
-    "scripts": {
-        "say-hello": "echo 'Hello World'",
-        "awesome-npm": "npm run say-hello && echo 'echo NPM is awesome!'",
-        "bash-hello": "bash hello.sh"
-    }
-
-}
