@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+:root{
+    --font-primary:'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container-content {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  color: white;
+  z-index: 99;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Open Sans";
+  align-items: center;
+}
+
+.setting-icon {
+  position: absolute;
+  z-index: 100;
+  top: 10%;
+  right: 5%;
+  font-size: 2.5rem;
+  background-color: #808080;
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.happy__content {
+  display: none;
+}
+
+h1 {
+  font-family: "Open Sans";
+  font-size: 3rem;
+    text-align: center;
+}
+
+
+.headline__modalbox{
+    font-family: 'Poppins', sans-serif;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: inline-block;
+  padding: 1em;
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+li span {
+  display: block;
+  text-align: center;
+}
+
+.button {
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 1rem 2rem;
+  border-radius: 50rem;
+  box-shadow: 0px 6px 19px 5px rgba(153, 153, 153, 0.4);
+  cursor: pointer;
+  
+}
+
+.container-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.content-modalbox {
+  position: absolute;
+  background-color: white;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.input-container__modalbox {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.birthday__input {
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 20px;
+  border-color: rgba(128, 128, 128, 0.3);
+}
+
+.submit-btn__input--style {
+  border: none;
+  background-color: #001e6c;
+  color: white;
+  font-size: max(.5vw, 1.2rem);
+}
+
+.alert-paragraph__modalbox {
+  font-size: 1.5rem;
+  font-family: "Open Sans";
+  background-color: #f8485e;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  line-height: 1.6;
+}
+
+@media (max-width: 750px) {
+  ul li {
+    text-align: center;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  
+}
